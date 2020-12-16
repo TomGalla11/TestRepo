@@ -55,8 +55,9 @@ options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_experimental_option("prefs", {"profile.default_content_setting_values.media_stream_mic": 1,
                                           "profile.default_content_setting_values.media_stream_camera": 1,
                                           "profile.default_content_setting_values.notifications": 2})
-chrome = webdriver.Chrome(executable_path="chromedriver.exe",
-                          options=options)
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+chrome = webdriver.Chrome(options=options)
 chrome.maximize_window()
 
 chrome.implicitly_wait(5)
